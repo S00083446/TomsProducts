@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { IProduct } from '../product-list/product';
 import { HttpClient, HttpErrorResponse  } from '@angular/common/http'; // HttpClient onlh available in angular 4
 import { Observable } from 'rxjs';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
+// import 'rxjs/add/observable/throw';
+// import 'rxjs/add/operator/catch';
+// import 'rxjs/add/operator/do';
 import { catchError, tap } from 'rxjs/operators';
-//import { AngularFireStoreCollection } from '@angular/firestore';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 
 
 @Injectable()
@@ -16,7 +16,7 @@ export class ProductService {
 
   // Service wrapper around the native Firestore SDK's
   // CollectionReference and Query types.
-  productsCollection: AngularFireStoreCollection<IProduct>;
+  productsCollection: AngularFirestoreCollection<IProduct>;
 
   // A representation of any set of Products over any amount of time
   products: Observable<IProduct[]>;
@@ -33,7 +33,7 @@ export class ProductService {
   getProducts(): Observable<IProduct[]> {// Type of data it's OBSERVING
   // valueChanges() returns the current state of the collection as an
   // Observable of data as a synchronized array of JSON objects.
-  // return
+  
    this.products = this.productsCollection.valueChanges();
 
   // As the data is now available as an Observable we can subscribe to it and 
@@ -42,6 +42,7 @@ export class ProductService {
     // return this._http.get<IProduct[]>(this._productUrl).pipe (  // IProduct[] specifies the TYPE of response we should get back
     //   tap(data => console.log('All:' + JSON.stringify(data))),
     //   catchError(this.handleError));
+    return this.products;
   }
 
   addProduct(product: IProduct): void{
