@@ -29,7 +29,6 @@
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js"
-              //C:\Users\S00083446\Desktop\Year 3\tomsproducts
             ]
           },
           "configurations": {
