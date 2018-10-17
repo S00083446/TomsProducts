@@ -14,34 +14,42 @@ import { StarRatingComponent } from './shared/star-rating/star-rating.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {faStar } from '@fortawesome/free-solid-svg-icons';
+import {LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AddProductComponent } from './add-product/add-product.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 library.add(faStar);
 
 const routes: Routes = [
-
+  {path: '', redirectTo: 'home',  pathMatch: 'full'}, // home page
+  {path: 'home', component: ProductListComponent },
+  {path: 'add', component: AddProductComponent },
+  {path: 'pageNotFound', component: PageNotFoundComponent },
+  {path: 'pageNot', redirectTo: 'pageNotFound' },
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
+    AddProductComponent,
+    PageNotFoundComponent,
     ConvertToSpaces,
     StarRatingComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-
     AngularFireModule.initializeApp(environment.firebase,),
     AngularFirestoreModule,
     RouterModule.forRoot(routes),
-    
     FormsModule,
     HttpClientModule,
     HttpModule,
     FontAwesomeModule
   ],
-   providers: [],
+   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
