@@ -1,48 +1,50 @@
 <div class='card'>
-    <h3 class='card-header bg-primary text-white'>
-        {{pageTitle}}
-    </h3>
-    <div class='card-body'>
+  <h3 class='card-header bg-primary text-white'>
+    {{pageTitle}}
+  </h3>
+  <div class='card-body'>
 
-        <div class="input-group mb-3" ng-repeat="product in products  | filter:query">
+    <div class="input-group mb-3" ng-repeat="product in products  | filter:query">
 
-            <input type="text" [(ngModel)]='listFilter' class="form-control" 
-            placeholder="Filter by:" aria-label="Filter by:" aria-describedby="basic-addon1">
-        </div>
-        <h5 class="card-text">Filtered by: {{listFilter}}</h5> 
-        <div class='table-responsive'>
-            <table class='table' *ngIf='products && products.length'>
-                <thead>
-                    <tr>
-                        <th>
-                            <button class='btn btn-primary' (click)='toggleImage()'>
-                              {{showImage ? 'Hide':'Show'}} Image
-                            </button>
-                        </th>
-                        <th>Product</th>
-                        <th>Code</th>
-                        <th>Available</th>
-                        <th>Price</th>
-                        <th>5 Star Rating</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let product of filteredProducts">
-                        <td>
-                            <img *ngIf='showImage' 
-                            [src]='product.imageUrl'
-                            [title]='product.productName'
-                            [style.width.px]='imageWidth' 
-                            [style.margin.px]='imageMargin'>
-                        </td>
-                        <td>{{product.productName | uppercase}}</td>
-                        <td>{{product.productCode | convertToSpaces:'-'}}</td>
-                        <td>{{product.releaseDate}}</td>
-                        <td>{{product.price | currency: 'EUR' : display: '1.2-2' }}</td>
-                        <td><app-star-rating [rating]='product.starRating' (notify)='onNotify($event)'></app-star-rating></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+      <input type="text" [(ngModel)]='listFilter' class="form-control" placeholder="Filter by:" aria-label="Filter by:"
+        aria-describedby="basic-addon1">
     </div>
+    <h5 class="card-text">Filtered by: {{listFilter}}</h5>
+    <div class='table-responsive'>
+      <table class='table' *ngIf='products && products.length'>
+        <thead>
+          <tr>
+            <th>
+              <button class='btn btn-primary' (click)='toggleImage()'>
+                {{showImage ? 'Hide':'Show'}} Image
+              </button>
+            </th>
+            <th>Product</th>
+            <th>Code</th>
+            <th>Available</th>
+            <th>Price</th>
+            <th>5 Star Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of filteredProducts">
+            <td>
+              <img *ngIf='showImage' [src]='product.imageUrl' [title]='product.productName' [style.width.px]='imageWidth'
+                [style.margin.px]='imageMargin'>
+            </td>
+            <td>{{product.productName | uppercase}}</td>
+            <td>{{product.productCode | convertToSpaces:'-'}}</td>
+            <td>{{product.releaseDate}}</td>
+            <td>{{product.price | currency: 'EUR' : display: '1.2-2' }}</td>
+            <td>
+              <app-star-rating [rating]='product.starRating' (notify)='onNotify($event)'></app-star-rating>
+            </td>
+            <td><button id="remove" class="btn" (click)="deleteProduct(product.id)">
+                <i class="fa fa-trash"></i> Trash</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

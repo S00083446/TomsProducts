@@ -35,8 +35,7 @@ export class ProductListComponent implements OnInit {
 
   performFilter(filterBy: string): IProduct[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return
-     this.products.filter((product: IProduct) => product.productName.toLocaleLowerCase().indexOf(filterBy) != -1);
+    return this.products.filter((product: IProduct) => product.productName.toLocaleLowerCase().indexOf(filterBy) != -1);
     // return filtered list of Products using JavaScript bult-in 'filter' function
     // extract each product in product array, convert productName to lower case
     // check for index of what is passed in, if index is (-1) indicates it found nothing
@@ -56,5 +55,9 @@ export class ProductListComponent implements OnInit {
       this.filteredProducts = this.products;
     },
       error => this.errorMessage = <any>error);
+  }
+
+  deleteProduct(id: string): void{
+    this._productService.deleteProduct(id);
   }
 }
