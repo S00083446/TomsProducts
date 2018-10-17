@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
+
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { environment } from '../environments/environment.prod';
+import { environment } from '../environments/environment';
+
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,9 +33,11 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+
     AngularFireModule.initializeApp(environment.firebase,),
     AngularFirestoreModule,
     RouterModule.forRoot(routes),
+    
     FormsModule,
     HttpClientModule,
     HttpModule,
