@@ -17,12 +17,21 @@ import {faStar } from '@fortawesome/free-solid-svg-icons';
 import {LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AddProductComponent } from './add-product/add-product.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { NavComponent } from './nav/nav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
+import {
+  MatButtonModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatCardModule
+} from '@angular/material';
 library.add(faStar);
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home',  pathMatch: 'full'}, // home page
+  {path: '', redirectTo: '/home',  pathMatch: 'full'}, // home page
   {path: 'home', component: ProductListComponent },
   {path: 'add', component: AddProductComponent },
   {path: 'pageNotFound', component: PageNotFoundComponent },
@@ -31,14 +40,23 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    // BrowserAnimationsModule,
     AppComponent,
     ProductListComponent,
     AddProductComponent,
     PageNotFoundComponent,
     ConvertToSpaces,
-    StarRatingComponent
+    StarRatingComponent,
+    NavComponent
   ],
-  imports: [
+  imports: [ 
+     MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    BrowserAnimationsModule,
+
     BrowserModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase,),

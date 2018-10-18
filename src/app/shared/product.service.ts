@@ -25,7 +25,7 @@ export class ProductService {
     // Connect to database
     this.productsCollection = _afs.collection<IProduct>("products");
     console.log("Adding all products to firestore...")
-    this.addAllProducts();
+    // this.addAllProducts();
   }
 
   getProducts(): Observable<IProduct[]> {// Type of data it's OBSERVING
@@ -63,19 +63,19 @@ export class ProductService {
     this.productsCollection.add(product);
   }
 
-  addAllProducts() {
-    this._http.get<IProduct[]>(this._productUrl).subscribe(
-      products => {
-        this.allProducts = products;
-        console.log("getProducts" + JSON.stringify(products));
-        for (let product of this.allProducts) {
-          console.log("Adding: " + product.productName);
-          this.productsCollection.add(product);
-        }
-      },
-      error => (this.errorMessage = <any>error)
-    );
-  }
+  // addAllProducts() {
+  //   this._http.get<IProduct[]>(this._productUrl).subscribe(
+  //     products => {
+  //       this.allProducts = products;
+  //       console.log("getProducts" + JSON.stringify(products));
+  //       for (let product of this.allProducts) {
+  //         console.log("Adding: " + product.productName);
+  //         this.productsCollection.add(product);
+  //       }
+  //     },
+  //     error => (this.errorMessage = <any>error)
+  //   );
+  // }
   private handleError(err: HttpErrorResponse) {
     console.log(err.message);
     return Observable.throw(err.message);

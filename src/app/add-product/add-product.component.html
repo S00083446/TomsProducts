@@ -1,3 +1,39 @@
-<p>
-  add-product works!
-</p>
+<div class='card'>
+  <div class='card-body'>
+    <form>
+      <div class="form-group">
+         <label for="id">Product ID</label>
+        <input type="number" class="form-control" id="id" name="id" placeholder="Enter id" [(ngModel)]="productId">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputName">Product Name</label>
+        <input type="text" class="form-control" id="exampleInputName" name="name" placeholder="Enter name" [(ngModel)]="productName">
+      </div>
+      <div class="form-group">
+          <label for="code">Product Code</label>
+          <input type="text" class="form-control" id="code" name="code" placeholder="Enter code" [(ngModel)]="productCode">
+      </div>
+      <div class="form-group">
+        <label for="description">Product Description</label>
+        <input type="text" class="form-control" id="description" name="description" placeholder="Enter description" [(ngModel)]="description">
+      </div>
+      <div class="form-group">
+        <label for="price">Product Price</label>
+        <input type="number" class="form-control" id="price" name="price" placeholder="Enter price" [(ngModel)]="price">
+      </div>
+      <div class="form-group">
+        <label for="url">Product Url</label>
+        <input type="text" class="form-control" id="url" name="url" placeholder="Enter url" [(ngModel)]="imageUrl">
+      </div>
+      <div class="form-group">
+        <label for="releaseDate">Product Release Date</label>
+        <input type="text" class="form-control" id="releaseDate" name="releaseDate" placeholder="Enter release Date" [(ngModel)]="releaseDate">
+      </div>
+      <div class="form-group">
+        <label for="rating">Product Rating</label>
+        <input type="number" class="form-control" id="rating" name="rating" placeholder="Enter rating" [(ngModel)]="starRating">
+      </div>
+      <button type="submit" (click)="addProduct()"  class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

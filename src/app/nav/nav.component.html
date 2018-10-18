@@ -1,0 +1,20 @@
+<!-- <div class="ui container">
+  <div class="ui three item menu">
+    {{pageTitle }}
+  <a href="active item" [routerLink]="['/home']">Product List</a>
+  <a href="active item" [routerLink]="['add']">Add Product</a>
+  <a href="active item" [routerLink]="['pageNotFound']">Page Not Found</a>
+</div>
+</div>
+<router-outlet></router-outlet>  -->
+
+<mat-toolbar color="primary">
+    <div class="button-row">
+        {{pageTitle}}
+      <span style="flex:1 1 auto"></span>
+      <button mat-button  [routerLink]="['/home']">Product List</button>
+      <button  mat-button [routerLink]="['add']">Add Product</button>
+      <button  mat-button [routerLink]="['pageNotFound']">Page Not Found</button>
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
