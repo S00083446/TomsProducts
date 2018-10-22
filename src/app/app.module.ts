@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -22,6 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { SignupComponent } from './signup/signup.component';
+import {MatInputModule} from '@angular/material/input';
+
+import {MatTableModule} from '@angular/material/table';
 
 import {
   MatButtonModule,
@@ -29,8 +33,7 @@ import {
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
-  
-  MatFormFieldModule,
+  // MatFormFieldModule,
   // MatLabel,
 } from '@angular/material';
 import { AuthGuard } from './service/auth.guard';
@@ -63,8 +66,10 @@ const routes: Routes = [
     SignupComponent
   ],
   imports: [ 
-    MatFormFieldModule,
-
+    AngularFireAuthModule,
+    // MatFormFieldModule,
+    MatTableModule,
+    MatInputModule,
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
@@ -82,7 +87,7 @@ const routes: Routes = [
     HttpModule,
     FontAwesomeModule
   ],
-   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, AngularFireAuthModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
