@@ -6,7 +6,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ConvertToSpaces } from './shared/convert-to-spaces.pipe';
@@ -19,46 +19,61 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavComponent } from './nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { LoginComponent } from './login/login.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { SignupComponent } from './signup/signup.component';
 
 import {
   MatButtonModule,
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
-  MatCardModule
+  MatCardModule,
+  
+  MatFormFieldModule,
+  // MatLabel,
 } from '@angular/material';
+import { AuthGuard } from './service/auth.guard';
+
 library.add(faStar);
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home',  pathMatch: 'full'}, // home page
-  {path: 'home', component: ProductListComponent },
-  {path: 'add', component: AddProductComponent },
-  {path: 'pageNotFound', component: PageNotFoundComponent },
-  {path: 'pageNot', redirectTo: 'pageNotFound' },
-]
+  {path: '', redirectTo: 'login',  pathMatch: 'full', canActivate: [AuthGuard] }, // home page
+  {path: 'product-list', component: ProductListComponent, canActivate: [AuthGuard]  },
+  {path: 'add', component: AddProductComponent, canActivate: [AuthGuard]  },
+  {path: 'pageNotFound', component: PageNotFoundComponent, canActivate: [AuthGuard]  },
+  {path: 'home', component: ProductListComponent, canActivate: [AuthGuard]  },
+  {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent },
+  {path: '**', redirectTo: 'login', canActivate: [AuthGuard] }
+
+];
 
 @NgModule({
   declarations: [
-    // BrowserAnimationsModule,
     AppComponent,
     ProductListComponent,
     AddProductComponent,
     PageNotFoundComponent,
     ConvertToSpaces,
     StarRatingComponent,
-    NavComponent
+    NavComponent,
+    LoginComponent,
+    NotificationsComponent,
+    SignupComponent
   ],
   imports: [ 
-     MatButtonModule,
+    MatFormFieldModule,
+
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
     BrowserAnimationsModule,
-
+    // MatLabel,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase,),
     AngularFirestoreModule,
     RouterModule.forRoot(routes),

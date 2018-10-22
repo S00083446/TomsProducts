@@ -9,12 +9,16 @@
 <router-outlet></router-outlet>  -->
 
 <mat-toolbar color="primary">
-    <div class="button-row">
-        {{pageTitle}}
-      <span style="flex:1 1 auto"></span>
-      <button mat-button  [routerLink]="['/home']">Product List</button>
-      <button  mat-button [routerLink]="['add']">Add Product</button>
-      <button  mat-button [routerLink]="['pageNotFound']">Page Not Found</button>
-    </div>
+    <!-- <div class="button-row">
+        {{pageTitle}} -->
+      <button mat-button  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home">Toms Products</button>
+      <button mat-button  routerLinkActive="active" *ngIf="userLoggedIn()" routerLink="/product-list">List of Products</button>
+      <button mat-button  routerLinkActive="active" *ngIf="userLoggedIn()" routerLink="/add-product">Add a Products</button>
+
+      <span style="flex: 1 1 auto"></span>
+      <button mat-button routerLinkActive="active" *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+      <button mat-button routerLinkActive="active" *ngIf="isLoggedIn" (click)=onLogout()>Logout</button>
+      <button mat-button routerLinkActive="active" routerLink="/signup">Register</button>
+    <!-- </div> -->
   </mat-toolbar>
   <router-outlet></router-outlet>
