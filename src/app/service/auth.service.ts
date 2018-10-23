@@ -4,8 +4,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { NotificationService } from "./notification.service";
 import * as firebase from 'firebase/';
-// import 'firebase/auth';
-// import 'firebase/firestore'
 
 @Injectable({
   providedIn: 'root'

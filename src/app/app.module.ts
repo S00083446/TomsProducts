@@ -24,8 +24,6 @@ import { LoginComponent } from './login/login.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { SignupComponent } from './signup/signup.component';
 import {MatInputModule} from '@angular/material/input';
-// import 'firebase/app';
-// import 'firebase/auth';
 
 import {
   MatMenuModule,
