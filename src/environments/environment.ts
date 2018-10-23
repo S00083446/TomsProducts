@@ -11,7 +11,8 @@ export const environment = {
     projectId: "tomsproductsdatabase-c9adc",
     storageBucket: "tomsproductsdatabase-c9adc.appspot.com",
     messagingSenderId: "629158406743"
-  }
+  },
+  
 };
 
 /*

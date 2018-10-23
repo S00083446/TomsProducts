@@ -23,6 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { SignupComponent } from './signup/signup.component';
+import 'firebase/app';
+import 'firebase/auth';
 
 import {
   MatMenuModule,
