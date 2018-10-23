@@ -24,17 +24,14 @@ import { LoginComponent } from './login/login.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { SignupComponent } from './signup/signup.component';
 import {MatInputModule} from '@angular/material/input';
-
-import {MatTableModule} from '@angular/material/table';
+// import 'firebase/app';
+// import 'firebase/auth';
 
 import {
-  MatButtonModule,
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
-  // MatFormFieldModule,
-  // MatLabel,
 } from '@angular/material';
 import { AuthGuard } from './service/auth.guard';
 
@@ -49,7 +46,6 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent },
   {path: '**', redirectTo: 'login', canActivate: [AuthGuard] }
-
 ];
 
 @NgModule({
@@ -67,15 +63,12 @@ const routes: Routes = [
   ],
   imports: [ 
     AngularFireAuthModule,
-    // MatFormFieldModule,
-    MatTableModule,
     MatInputModule,
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
     BrowserAnimationsModule,
-    // MatLabel,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
