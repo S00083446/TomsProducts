@@ -14,8 +14,8 @@ import { ConvertToSpaces } from './shared/convert-to-spaces.pipe';
 import { StarRatingComponent } from './shared/star-rating/star-rating.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {faStar } from '@fortawesome/free-solid-svg-icons';
-import {LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AddProductComponent } from './add-product/add-product.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavComponent } from './nav/nav.component';
@@ -23,27 +23,33 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { SignupComponent } from './signup/signup.component';
-import {MatInputModule} from '@angular/material/input';
 
 import {
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
+  MatInputModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatListModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 import { AuthGuard } from './service/auth.guard';
+import { AuthService } from './service/auth.service';
+import { NotificationService } from './service/notification.service';
 
 library.add(faStar);
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login',  pathMatch: 'full', canActivate: [AuthGuard] }, // home page
-  {path: 'product-list', component: ProductListComponent, canActivate: [AuthGuard]  },
-  {path: 'add', component: AddProductComponent, canActivate: [AuthGuard]  },
-  {path: 'pageNotFound', component: PageNotFoundComponent, canActivate: [AuthGuard]  },
-  {path: 'home', component: ProductListComponent, canActivate: [AuthGuard]  },
-  {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignupComponent },
-  {path: '**', redirectTo: 'login', canActivate: [AuthGuard] }
+  { path: '', redirectTo: 'login', pathMatch: 'full', canActivate: [AuthGuard] }, // home page
+  { path: 'product-list', component: ProductListComponent, canActivate: [AuthGuard] },
+  { path: 'add', component: AddProductComponent, canActivate: [AuthGuard] },
+  { path: 'pageNotFound', component: PageNotFoundComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: ProductListComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: '**', redirectTo: 'login', canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -59,8 +65,12 @@ const routes: Routes = [
     NotificationsComponent,
     SignupComponent
   ],
-  imports: [ 
+  imports: [
     AngularFireAuthModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatListModule,
+    MatProgressSpinnerModule,
     MatInputModule,
     MatMenuModule,
     MatToolbarModule,
@@ -70,7 +80,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase,),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     RouterModule.forRoot(routes),
     FormsModule,
@@ -78,7 +88,7 @@ const routes: Routes = [
     HttpModule,
     FontAwesomeModule
   ],
-   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, AngularFireAuthModule],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, AngularFireAuthModule, AuthService, AuthGuard, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
