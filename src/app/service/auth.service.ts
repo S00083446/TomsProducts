@@ -2,16 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { NotificationService } from "./notification.service";
+import { NotificationService } from './notification.service';
 import * as firebase from 'firebase/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  
   private user: Observable<firebase.User>;
-  loggedInStatus: boolean = false;
+  loggedInStatus = false;
 
   constructor(private _firebaseAuth: AngularFireAuth, private router: Router, private notifier: NotificationService) {
     this.user = _firebaseAuth.authState;
@@ -53,34 +52,33 @@ export class AuthService {
     });
   }
 
-  doRegister(value){
+  doRegister(value) {
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
       .then(res => {
         resolve(res);
-      }, err => reject(err))
-    })
+      }, err => reject(err));
+    });
   }
 
-  doLogin(value){
+  doLogin(value) {
     return new Promise<any>((resolve, reject) => {
-      console.log("doLogin: email = "+value.email);
-      console.log("doLogin: pwd = "+value.password);
+      console.log('doLogin: email = ' + value.email);
+      console.log('doLogin: pwd = ' + value.password);
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
       .then(res => {
         resolve(res);
         this.loggedInStatus = true;
-      }, err => reject(err))
-    })
+      }, err => reject(err));
+    });
   }
 
-  doLogout(){
+  doLogout() {
     return new Promise((resolve, reject) => {
-      if(firebase.auth().currentUser){
-        this._firebaseAuth.auth.signOut()
+      if (firebase.auth().currentUser) {
+        this._firebaseAuth.auth.signOut();
         resolve();
-      }
-      else{
+      } else {
         reject();
       }
       this.loggedInStatus = false;
@@ -88,7 +86,7 @@ export class AuthService {
     });
   }
 
-  isLoggedIn():boolean {
+  isLoggedIn(): boolean {
       return this.loggedInStatus;
   }
 }
