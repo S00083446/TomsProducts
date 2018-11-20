@@ -64,6 +64,8 @@ export class AuthService {
 
   doLogin(value){
     return new Promise<any>((resolve, reject) => {
+      console.log("doLogin: email = "+value.email);
+      console.log("doLogin: pwd = "+value.password);
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
       .then(res => {
         resolve(res);

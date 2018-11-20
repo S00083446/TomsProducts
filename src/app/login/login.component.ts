@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    console.log("login: email = "+this.form.value.email);
+      console.log("login: pwd = "+this.form.value.password);
     this.auth.doLogin(this.form.value)
     .then(res => {
       this.myRoute.navigate(['product-list']);
