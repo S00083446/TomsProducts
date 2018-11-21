@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string;
   form;
   constructor(private fb: FormBuilder, private myRoute: Router,
-    private auth: AuthService) { 
+    private auth: AuthService) {
       this.form = fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', Validators.required]
@@ -22,15 +22,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(){
-    console.log("login: email = "+this.form.value.email);
-      console.log("login: pwd = "+this.form.value.password);
+  login() {
+    console.log('login: email = ' + this.form.value.email);
+      console.log('login: pwd = ' + this.form.value.password);
     this.auth.doLogin(this.form.value)
     .then(res => {
       this.myRoute.navigate(['product-list']);
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
-    })
+    });
   }
 }

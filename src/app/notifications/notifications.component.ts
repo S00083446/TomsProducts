@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from "../service/notification.service";
+import { NotificationService } from '../service/notification.service';
 
 @Component({
   selector: 'app-notifications',
@@ -7,7 +7,7 @@ import { NotificationService } from "../service/notification.service";
   styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent implements OnInit {
-  display: boolean = false;
+  display = false;
   message: string;
 
   constructor(private notifier: NotificationService ) {
@@ -19,7 +19,7 @@ export class NotificationsComponent implements OnInit {
     );
    }
 
-   removeMessage(){
+   removeMessage() {
      this.display = false;
      this.message = '';
    }

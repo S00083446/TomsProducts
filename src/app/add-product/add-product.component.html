@@ -29,6 +29,12 @@
         <label for="releaseDate">Product Release Date</label>
         <input type="text" class="form-control" id="releaseDate" name="releaseDate" placeholder="Enter release Date" [(ngModel)]="releaseDate">
       </div>
+
+      <div class="form-group">
+        <app-display-clipart (addImageStringEE)="addImageStringToFormTextBox($event)" *ngIf='showDisplayClipArtComponent'
+        [imageStr]='imageStr'></app-display-clipart>
+      </div>
+      
       <div class="form-group">
         <label for="rating">Product Rating</label>
         <input type="number" class="form-control" id="rating" name="rating" placeholder="Enter rating" [(ngModel)]="starRating">

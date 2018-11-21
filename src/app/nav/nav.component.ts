@@ -8,21 +8,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  
-  title: string = "Toms's Products";
+
+  title = 'Toms\'s Products';
 
   isLoggedIn: boolean;
   constructor(private auth: AuthService, private myRoute: Router) { }
 
-  userLoggedIn():boolean{
+  userLoggedIn(): boolean {
     this.isLoggedIn = this.auth.isLoggedIn();
-    return this.isLoggedIn
+    return this.isLoggedIn;
   }
 
-  onLogout(){
+  onLogout() {
     this.auth.doLogout();
     this.isLoggedIn = this.auth.isLoggedIn();
-    this.myRoute.navigate(["login"]);
+    this.myRoute.navigate(['login']);
   }
   ngOnInit() {
     this.isLoggedIn = this.auth.isLoggedIn();

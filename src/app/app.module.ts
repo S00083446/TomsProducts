@@ -26,6 +26,9 @@ import { SignupComponent } from './signup/signup.component';
 import 'firebase/app';
 import 'firebase/auth';
 
+//import { FlexLayoutModule } from '@angular/flex-layout';
+
+
 import {
   MatMenuModule,
   MatToolbarModule,
@@ -40,13 +43,15 @@ import {
 import { AuthGuard } from './service/auth.guard';
 import { AuthService } from './service/auth.service';
 import { NotificationService } from './service/notification.service';
+import { DisplayClipartComponent } from './display-clipart/display-clipart.component';
+import { ProductComponent } from './product/product.component';
 
 library.add(faStar);
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full', canActivate: [AuthGuard] }, // home page
   { path: 'product-list', component: ProductListComponent, canActivate: [AuthGuard] },
-  { path: 'add', component: AddProductComponent, canActivate: [AuthGuard] },
+  { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard] },
   { path: 'pageNotFound', component: PageNotFoundComponent, canActivate: [AuthGuard] },
   { path: 'home', component: ProductListComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
@@ -65,7 +70,10 @@ const routes: Routes = [
     NavComponent,
     LoginComponent,
     NotificationsComponent,
-    SignupComponent
+    SignupComponent,
+    DisplayClipartComponent,
+
+    ProductComponent  // added this
   ],
   imports: [
     AngularFireAuthModule,
@@ -90,6 +98,7 @@ const routes: Routes = [
     HttpModule,
     FontAwesomeModule
   ],
+  // tslint:disable-next-line:max-line-length
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, AngularFireAuthModule, AuthService, AuthGuard, NotificationService],
   bootstrap: [AppComponent]
 })
