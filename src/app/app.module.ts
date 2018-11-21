@@ -73,6 +73,8 @@ const routes: Routes = [
     SignupComponent,
     DisplayClipartComponent,
     ProductComponent  // added this
+
+    
   ],
   imports: [
     AngularFireAuthModule,
