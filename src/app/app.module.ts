@@ -72,7 +72,6 @@ const routes: Routes = [
     NotificationsComponent,
     SignupComponent,
     DisplayClipartComponent,
-
     ProductComponent  // added this
   ],
   imports: [
