@@ -33,7 +33,7 @@ export class AddProductComponent implements OnInit {
     return false;   // this will hide the display intil it's needed
   }
 
-  addImageStringFormTextBox(evt) : boolean{
+  addImageStringToFormTextBox(evt) : boolean{
     this.imageUrl = evt;
     return false;
   }

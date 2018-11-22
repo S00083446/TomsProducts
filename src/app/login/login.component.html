@@ -14,11 +14,17 @@
   <mat-card-actions>
     <button mat-raised-button (click)="login()" color="primary">Login</button>
   </mat-card-actions>
+<mat-card-actions>
+  <button mat-raised-button (click)="doFacebookLogin()" color="primary">
+    <i class="fa fa-facebook" aria-hidden="true"></i>
+    Login with Facebook
+  </button>
+</mat-card-actions>
 </mat-card>
 
 <!-- 
 <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
-<script>
+<script>''
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDdfS2NAHw4xrwt4ncytckD9DFivgY0h78",

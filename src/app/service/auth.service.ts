@@ -9,6 +9,7 @@ import * as firebase from 'firebase/';
   providedIn: 'root'
 })
 export class AuthService {
+  [x: string]: any;
   private user: Observable<firebase.User>;
   loggedInStatus = false;
 
@@ -73,6 +74,7 @@ export class AuthService {
     });
   }
 
+  
   doLogout() {
     return new Promise((resolve, reject) => {
       if (firebase.auth().currentUser) {
@@ -89,4 +91,6 @@ export class AuthService {
   isLoggedIn(): boolean {
       return this.loggedInStatus;
   }
+
+  
 }

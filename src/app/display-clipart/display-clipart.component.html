@@ -1,7 +1,7 @@
 <div fxLayout="row" class="layout" fxLayoutAlign="space-evenly stretch" fxLayoutGap="20px" *ngIf='clipArtData'>
-  <mat-card fxFlex="0 1 calc(20% - 20 px)" *ngFor="let image of clipArtData.payload">
+  <mat-card fxFlex="0 1 calc(20% - 20px)" *ngFor="let image of clipArtData.payload">
     <mat-card-header>
-      <mat-card-title>{{image.ti</mat-card-title>
+      <mat-card-title> {{image.title}} </mat-card-title>
     </mat-card-header>
     <img class="image" mat-card-md-image [src]='image.svg.url' [title]='image.title'>
 
@@ -9,4 +9,4 @@
       <button mat-raised-button color="primary" (click)="selectImage(image.svg.url)">Use Image </button>
     </mat-card-actions>
   </mat-card>
-</div>>
+</div>

@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 export class ClipartService {
   url: string = "https://openclipart.org/search/json?quey=";
   data: IOpenClipArt;
-
   constructor( private _http: HttpClient ) { 
 }
 getImageList( imageStr: string ) : Observable<IOpenClipArt>{

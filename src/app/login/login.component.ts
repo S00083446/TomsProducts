@@ -31,6 +31,17 @@ export class LoginComponent implements OnInit {
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
-    });
+    }); // semi colon?
+  }
+
+  doFacebookLogin(){
+    this.auth.doFacebookLogin()
+    .then(res => {
+      this.myRoute.navigate(['product-list']);
+    }, err => {
+      console.log(err);
+      this.errorMessage = err.message;
+    
+    })
   }
 }

@@ -26,8 +26,7 @@ import { SignupComponent } from './signup/signup.component';
 import 'firebase/app';
 import 'firebase/auth';
 
-//import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {
   MatMenuModule,
@@ -73,8 +72,6 @@ const routes: Routes = [
     SignupComponent,
     DisplayClipartComponent,
     ProductComponent  // added this
-
-    
   ],
   imports: [
     AngularFireAuthModule,
