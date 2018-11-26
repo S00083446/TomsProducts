@@ -21,7 +21,7 @@ export class AddProductComponent implements OnInit {
   price: number;
   starRating: number;
   imageUrl: string;
-  showDisplayClipartComponent: boolean;
+  showDisplayClipartComponent: boolean ;
 
   listFilter: string;
 
@@ -30,7 +30,7 @@ export class AddProductComponent implements OnInit {
 
   showHideDisplayClipartComponent(): boolean{
     this.showDisplayClipartComponent = !this.showDisplayClipartComponent;
-    return false;   // this will hide the display intil it's needed
+    return false;   // this will hide the display until it is needed
   }
 
   addImageStringToFormTextBox(evt) : boolean{
@@ -41,18 +41,8 @@ export class AddProductComponent implements OnInit {
   }
 
   // When submit button is clicked, it calls this method
-  // logging our data to console
   addProduct(): void {
-    // console.log(this.productId);
-    // console.log(this.productName);
-    // console.log(this.productCode);
-    // console.log(this.releaseDate);
-    // console.log(this.description);
-    // console.log(this.price);
-    // console.log(this.starRating);
-    // console.log(this.imageUrl);
-
-    let product: IProduct = {
+   let product: IProduct = {
       productId: this.productId,
       productName: this.productName,
       productCode: this.productCode,
@@ -62,21 +52,7 @@ export class AddProductComponent implements OnInit {
       starRating: this.starRating,
       imageUrl: this.imageUrl,
     };
-
-    // // Then we create a temporary product to store the data
-    // // The data is passed in from our inputs using ngModel
-    // const product: IProduct = {
-    //   productId: this.productId,
-    //   productName: this.productName,
-    //   productCode: this.productCode,
-    //   releaseDate: this.releaseDate,
-    //   description: this.description,
-    //   price: this.price,
-    //   starRating: this.starRating,
-    //   imageUrl: this.imageUrl,
-    // };
-
-    // Lastly the we call our service method which will add our product to the colletion of products
+    // Lastly then we call our service method which will add our product to the colletion of products
     this._productService.addProduct(product);
     // This will redirect to the 'product-list component'
     this.router.navigate(['/product-list']);

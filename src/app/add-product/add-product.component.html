@@ -1,45 +1,65 @@
 <div class='card'>
   <div class='card-body'>
     <form>
+      <!-- Prodcut ID -->
       <div class="form-group">
          <label for="id">Product ID</label>
         <input type="number" class="form-control" id="id" name="id" placeholder="Enter id" [(ngModel)]="productId">
       </div>
+      <!-- Product Name -->
       <div class="form-group">
         <label for="exampleInputName">Product Name</label>
         <input type="text" class="form-control" id="exampleInputName" name="name" placeholder="Enter name" [(ngModel)]="productName">
       </div>
+      <!-- Product code -->
       <div class="form-group">
           <label for="code">Product Code</label>
           <input type="text" class="form-control" id="code" name="code" placeholder="Enter code" [(ngModel)]="productCode">
       </div>
+      <!-- Product Description -->
       <div class="form-group">
         <label for="description">Product Description</label>
         <input type="text" class="form-control" id="description" name="description" placeholder="Enter description" [(ngModel)]="description">
       </div>
+      <!-- Prodcut Price -->
       <div class="form-group">
         <label for="price">Product Price</label>
         <input type="number" class="form-control" id="price" name="price" placeholder="Enter price" [(ngModel)]="price">
       </div>
+      <!-- Product Url -->
       <div class="form-group">
         <label for="url">Product Url</label>
         <input type="text" class="form-control" id="url" name="url" placeholder="Enter url" [(ngModel)]="imageUrl">
       </div>
+      <!-- Release Date -->
       <div class="form-group">
         <label for="releaseDate">Product Release Date</label>
         <input type="text" class="form-control" id="releaseDate" name="releaseDate" placeholder="Enter release Date" [(ngModel)]="releaseDate">
       </div>
 
-      <div class="form-group">
-        <app-display-clipart (addImageStringEE)="addImageStringToFormTextBox($event)" *ngIf='showDisplayClipartComponent'
-        [imageStr]='imageStr'></app-display-clipart>
-      </div>
-      
+      <!-- Star Rating -->
       <div class="form-group">
         <label for="rating">Product Rating</label>
         <input type="number" class="form-control" id="rating" name="rating" placeholder="Enter rating" [(ngModel)]="starRating">
       </div>
-      <button type="submit" (click)="addProduct()"  class="btn btn-primary">Submit</button>
+
+      <!-- Search ClipArt API for images -->
+      <div class="form-group" fxLayout="row" fxLayoutGap="20px">
+          <input fxFlex="60" type="text" class="form-control" id="imageStr" name="imageStr" placeholder="Enter Image String"
+          [(ngModel)]='imageStr'>
+          <button fxFlex="20" mat-raised-button color="primary" type="submit" (click)="showHideDisplayClipartComponent()"> Find Images </button>
+        </div>
+
+        <!-- if there is Clip art, add its URL to the addImageString.... event -->
+        <div class="form-group">
+          <app-display-clipart (addImageStringEE)="addImageStringToFormTextBox($event)" *ngIf='showDisplayClipartComponent'
+          [imageStr]='imageStr'></app-display-clipart>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter Image URL" [(ngModel)]='imageUrl'>
+        </div>
+
+      <button type="submit" (click)="addProduct()"  class="btn btn-primary">Add Product</button>
     </form>
   </div>
 </div>

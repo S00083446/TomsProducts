@@ -9,7 +9,7 @@ import { ClipartService } from '../shared/clipart.service';
 export class DisplayClipartComponent implements OnInit {
   // Search string passed down from the add-product component
 @Input() imageStr: string;
-// Passsing back up the URL of the selected image
+  // Passsing back up the URL of the selected image
 @Output() addImageStringEE: EventEmitter<any> = new EventEmitter();
 
 clipArtData: IOpenClipArt;
