@@ -75,6 +75,7 @@ export class AuthService {
     });
   }
 
+  // Popup-display method to log into Facebook
   doFacebookLogin(){
     return new Promise<any>((resolve, reject ) => {
       let provider = new firebase.auth.FacebookAuthProvider();
@@ -86,7 +87,6 @@ export class AuthService {
       }, err => {
         console.log(err);
         reject(err);
-      
       })
     });
   }
@@ -107,7 +107,4 @@ export class AuthService {
   isLoggedIn(): boolean {
       return this.loggedInStatus;
   }
-
-  
-  
 }

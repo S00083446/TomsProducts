@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../product-list/product';
 import { ProductService } from '../shared/product.service';
-
 import { Router } from '@angular/router';
 import { retry } from 'rxjs/operators';
 
@@ -22,8 +21,8 @@ export class AddProductComponent implements OnInit {
   starRating: number;
   imageUrl: string;
   showDisplayClipartComponent: boolean ;
-
   listFilter: string;
+  imageStr: string; // added this
 
   constructor(private _productService: ProductService, private router: Router) { }
   // router will redirect after the form is submitted
@@ -56,7 +55,5 @@ export class AddProductComponent implements OnInit {
     this._productService.addProduct(product);
     // This will redirect to the 'product-list component'
     this.router.navigate(['/product-list']);
-
   }
-
 }

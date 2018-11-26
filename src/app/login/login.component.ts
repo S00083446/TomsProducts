@@ -11,6 +11,7 @@ import { AuthService } from '../service/auth.service';
 export class LoginComponent implements OnInit {
   errorMessage: string;
   form;
+
   constructor(private fb: FormBuilder, private myRoute: Router,
     private auth: AuthService) {
       this.form = fb.group({
@@ -18,7 +19,6 @@ export class LoginComponent implements OnInit {
         password: ['', Validators.required]
       });
     }
-
     
   ngOnInit() {
   }
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       this.errorMessage = err.message;
     })
   }
+  // Calling Facebook login method in auth service
   tryFacebookLogin(){
     this.auth.doFacebookLogin()
     .then(res => {
@@ -41,11 +42,6 @@ export class LoginComponent implements OnInit {
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
-    
     })
   }
-  
-  
 }
- 
-

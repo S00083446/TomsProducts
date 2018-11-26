@@ -33,8 +33,6 @@
             <td>{{product.productCode | convertToSpaces:'-'}}</td>
             <td>{{product.releaseDate}}</td>
             <td>{{product.price | currency: 'EUR'  }}</td>
-            <!-- <td>{{product.price | currency: 'EUR' : display: '1.2-2' }}</td> -->
-
             <td>
               <app-star-rating [rating]='product.starRating' (notify)='onNotify($event)'></app-star-rating>
             </td>

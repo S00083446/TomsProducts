@@ -16,4 +16,3 @@ getImageList(imageStr: string) : Observable<IOpenClipArt>{
   return this._http.get<IOpenClipArt>(this.url+imageStr);
 }
 }
-

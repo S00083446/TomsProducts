@@ -27,30 +27,6 @@ import 'firebase/app';
 import 'firebase/auth';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-// import {
-//   SocialLoginModule,
-//   AuthServiceConfig,
-//   GoogleLoginProvider,
-//   FacebookLoginProvider,
-// } from "angular-6-social-login-v2";
-
-// export function getAuthServiceConfigs() {
-//   let config = new AuthServiceConfig(
-//       [
-//         {
-//           id: FacebookLoginProvider.PROVIDER_ID,
-//           provider: new FacebookLoginProvider("Your-Facebook-app-id")
-//         },
-//         {
-//           id: GoogleLoginProvider.PROVIDER_ID,
-//           provider: new GoogleLoginProvider("Your-Google-Client-Id")
-//         },
-     
-//       ]
-//   );
-//   return config;
-// }
-
 import {
   MatMenuModule,
   MatToolbarModule,
@@ -118,7 +94,6 @@ const routes: Routes = [
     HttpClientModule,
     HttpModule,
     FontAwesomeModule,
-    // SocialLoginModule
   ],
   providers: [{ provide: LocationStrategy,  useClass: HashLocationStrategy } , AuthService, AuthGuard, NotificationService],
   bootstrap: [AppComponent]
