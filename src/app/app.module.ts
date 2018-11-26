@@ -25,8 +25,31 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { SignupComponent } from './signup/signup.component';
 import 'firebase/app';
 import 'firebase/auth';
-
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+// import {
+//   SocialLoginModule,
+//   AuthServiceConfig,
+//   GoogleLoginProvider,
+//   FacebookLoginProvider,
+// } from "angular-6-social-login-v2";
+
+// export function getAuthServiceConfigs() {
+//   let config = new AuthServiceConfig(
+//       [
+//         {
+//           id: FacebookLoginProvider.PROVIDER_ID,
+//           provider: new FacebookLoginProvider("Your-Facebook-app-id")
+//         },
+//         {
+//           id: GoogleLoginProvider.PROVIDER_ID,
+//           provider: new GoogleLoginProvider("Your-Google-Client-Id")
+//         },
+     
+//       ]
+//   );
+//   return config;
+// }
 
 import {
   MatMenuModule,
@@ -71,7 +94,7 @@ const routes: Routes = [
     NotificationsComponent,
     SignupComponent,
     DisplayClipartComponent,
-    ProductComponent  // added this
+    ProductComponent
   ],
   imports: [
     AngularFireAuthModule,
@@ -94,10 +117,10 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     HttpModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    // SocialLoginModule
   ],
-  // tslint:disable-next-line:max-line-length
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, AngularFireAuthModule, AuthService, AuthGuard, NotificationService],
+  providers: [{ provide: LocationStrategy,  useClass: HashLocationStrategy } , AuthService, AuthGuard, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

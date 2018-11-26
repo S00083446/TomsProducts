@@ -27,6 +27,7 @@
     "@fortawesome/angular-fontawesome": "^0.2.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
+    "angular-6-social-login-v2": "^1.0.5",
     "bootstrap": "^3.3.7",
     "core-js": "^2.5.4",
     "firebase": "^5.5.9",

@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { NotificationService } from './notification.service';
 import * as firebase from 'firebase/';
+import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -74,6 +75,21 @@ export class AuthService {
     });
   }
 
+  doFacebookLogin(){
+    return new Promise<any>((resolve, reject ) => {
+      let provider = new firebase.auth.FacebookAuthProvider();
+      this._firebaseAuth.auth
+      .signInWithPopup(provider)
+      .then(res => {
+        resolve(res);
+        this.loggedInStatus = true;
+      }, err => {
+        console.log(err);
+        reject(err);
+      
+      })
+    });
+  }
   
   doLogout() {
     return new Promise((resolve, reject) => {

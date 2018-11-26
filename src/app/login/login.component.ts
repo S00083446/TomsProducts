@@ -1,7 +1,7 @@
 import { Component, OnInit, Pipe } from '@angular/core';
-import {AuthService } from '../service/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
       });
     }
 
+    
   ngOnInit() {
   }
 
@@ -33,8 +34,7 @@ export class LoginComponent implements OnInit {
       this.errorMessage = err.message;
     })
   }
-
-  doFacebookLogin(){
+  tryFacebookLogin(){
     this.auth.doFacebookLogin()
     .then(res => {
       this.myRoute.navigate(['product-list']);
@@ -44,4 +44,8 @@ export class LoginComponent implements OnInit {
     
     })
   }
+  
+  
 }
+ 
+
