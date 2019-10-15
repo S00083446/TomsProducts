@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+      <button mat-button  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home">Toms Products</button>
+      <button mat-button  routerLinkActive="active" *ngIf="userLoggedIn()" routerLink="/product-list">List of Products</button>
+      <button mat-button  routerLinkActive="active" *ngIf="userLoggedIn()" routerLink="/add-product">Add a Product</button>
+
+      <span style="flex: 1 1 auto"></span>
+      <button mat-button routerLinkActive="active" *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+      <button mat-button routerLinkActive="active" *ngIf="isLoggedIn" (click)=onLogout()>Logout</button>
+      <button mat-button routerLinkActive="active" routerLink="/signup">Register</button>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
