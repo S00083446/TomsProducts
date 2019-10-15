@@ -54,9 +54,10 @@ export class ProductService {
   }
 
   deleteProduct(id: string): void {
-    this.productsCollection.doc(id).delete()
+       this.productsCollection.doc(id).delete()
       .catch(error => { console.log("deleteProduct error: " + error); })
       .then(() => console.log("deleteProduct: id = "+id ));
+   
   }
 
   addProduct(product: IProduct): void {

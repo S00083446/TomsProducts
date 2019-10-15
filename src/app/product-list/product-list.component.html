@@ -36,8 +36,8 @@
             <td>
               <app-star-rating [rating]='product.starRating' (notify)='onNotify($event)'></app-star-rating>
             </td>
-            <td><button id="remove" class="btn" (click)="deleteProduct(product.productId)">
-                <i class="fa fa-trash"></i> Trash</button>
+            <td><button id="remove" class="btn" (click)="deleteProduct(product.id)">
+                <i class="fa fa-trash"></i> Trash</button> 
             </td>
           </tr>
         </tbody>
