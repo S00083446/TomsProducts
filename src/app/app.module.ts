@@ -42,7 +42,7 @@ import { AuthGuard } from './service/auth.guard';
 import { AuthService } from './service/auth.service';
 import { NotificationService } from './service/notification.service';
 import { DisplayClipartComponent } from './display-clipart/display-clipart.component';
-import { ProductComponent } from './product/product.component';
+import { FighterComponent } from './fighter/fighter.component';
 
 library.add(faStar);
 
@@ -70,7 +70,7 @@ const routes: Routes = [
     NotificationsComponent,
     SignupComponent,
     DisplayClipartComponent,
-    ProductComponent
+    FighterComponent
   ],
   imports: [
     AngularFireAuthModule,
@@ -92,6 +92,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule,
     HttpClientModule,
+    // tslint:disable-next-line: deprecation
     HttpModule,
     FontAwesomeModule,
   ],

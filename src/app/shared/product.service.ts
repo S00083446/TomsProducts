@@ -23,29 +23,29 @@ export class ProductService {
 
   constructor(private _http: HttpClient, private _afs: AngularFirestore) {
     // Connect to database
-    this.productsCollection = _afs.collection<IProduct>("products");
-    console.log("Adding all products to firestore...")
+    this.productsCollection = _afs.collection<IProduct>('products');
+    console.log('Adding all products to firestore...');
     // this.addAllProducts();
   }
 
   getProducts(): Observable<IProduct[]> {// Type of data it's OBSERVING
     // valueChanges() returns the current state of the collection as an
     // Observable of data as a synchronized array of JSON objects.
-    //this.products = this.productsCollection.valueChanges();
+    // this.products = this.productsCollection.valueChanges();
     this.products = this.productsCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as IProduct;
-        console.log("getProducts:data" + JSON.stringify(data));
+        console.log('getProducts:data' + JSON.stringify(data));
         const id = a.payload.doc.id;
-        console.log("getProducts:id = " + id);
+        console.log('getProducts:id = ' + id);
 
         return { id, ...data };
       }))
     );
 
-    // As the data is now available as an Observable we can subscribe to it and 
+    // As the data is now available as an Observable we can subscribe to it and
     // Output to the console to have a peek at it
-    this.products.subscribe(data => console.log("getProducts" + data));
+    this.products.subscribe(data => console.log('getProducts' + data));
 
     return this.products;
     // return this._http.get<IProduct[]>(this._productUrl).pipe (  // IProduct[] specifies the TYPE of response we should get back
@@ -55,9 +55,10 @@ export class ProductService {
 
   deleteProduct(id: string): void {
        this.productsCollection.doc(id).delete()
-      .catch(error => { console.log("deleteProduct error: " + error); })
-      .then(() => console.log("deleteProduct: id = "+id ));
-   
+      .catch(error => { console.log('deleteProduct error: ' + error); })
+      // tslint:disable-next-line: whitespace
+      .then(() => console.log('deleteProduct: id = '+ id ));
+
   }
 
   addProduct(product: IProduct): void {

@@ -55,6 +55,7 @@ export class AuthService {
   }
 
   doRegister(value) {
+    // tslint:disable-next-line: no-shadowed-variable
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
       .then(res => {
@@ -64,6 +65,7 @@ export class AuthService {
   }
 
   doLogin(value) {
+    // tslint:disable-next-line: no-shadowed-variable
     return new Promise<any>((resolve, reject) => {
       console.log('doLogin: email = ' + value.email);
       console.log('doLogin: pwd = ' + value.password);
@@ -76,8 +78,11 @@ export class AuthService {
   }
 
   // Popup-display method to log into Facebook
+  // tslint:disable-next-line: one-line
   doFacebookLogin(){
+    // tslint:disable-next-line: no-shadowed-variable
     return new Promise<any>((resolve, reject ) => {
+      // tslint:disable-next-line: prefer-const
       let provider = new firebase.auth.FacebookAuthProvider();
       this._firebaseAuth.auth
       .signInWithPopup(provider)
@@ -87,11 +92,14 @@ export class AuthService {
       }, err => {
         console.log(err);
         reject(err);
+      // tslint:disable-next-line: semicolon
       })
     });
   }
+  // tslint:disable-next-line: no-trailing-whitespace
   
   doLogout() {
+    // tslint:disable-next-line: no-shadowed-variable
     return new Promise((resolve, reject) => {
       if (firebase.auth().currentUser) {
         this._firebaseAuth.auth.signOut();
@@ -107,4 +115,5 @@ export class AuthService {
   isLoggedIn(): boolean {
       return this.loggedInStatus;
   }
+// tslint:disable-next-line: eofline
 }
